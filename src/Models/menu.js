@@ -1,4 +1,5 @@
 const db = require('../Configs/dbMysql');
+
 const querySelect = "SELECT menu.id_menu, menu.name, menu.price, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
 
 const menuModel = {
@@ -59,7 +60,14 @@ const menuModel = {
             const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%'`;
             db.query(searchMenuByName, (err, data) => {
                 if(!err) {
-                    resolve(data);
+                    if(data.length === 0){
+                      reject({
+                          msg : 'Data not found'
+                      })
+                    }else{
+                        resolve(data);
+                    }
+                    
                 } else {
                     reject(err);
                 }
