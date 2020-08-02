@@ -16,10 +16,10 @@ const menuModel = {
         });
     },
     insertMenu: (body) => {
+        const{name, price, id_category} = body
         return new Promise((resolve, reject) => {
-            const {name, price, id_category} = body;
-            const queryString = "INSERT INTO menu SET name = ? , price = ?, id_category = ?";
-            db.query(queryString, [name, price, id_category], (err, data) => {
+            const queryInsert = "INSERT INTO menu SET name =?, price =?, id_category =?";
+            db.query(queryInsert, [name, price, id_category], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
@@ -30,10 +30,10 @@ const menuModel = {
         });
     },
     deleteById: (body) => {
+        const {id_menu} = body;
         return new Promise((resolve, reject) => {
-            const {id} = body;
-            const queryString = "DELETE FROM menu WHERE id_menu=?";
-            db.query(queryString, [id], (err, data) => {
+            const queryString = `DELETE FROM menu WHERE id_menu=${id_menu}`;
+            db.query(queryString,(err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
@@ -43,8 +43,8 @@ const menuModel = {
         });
     },
     updateById: (body) => {
+        const {name, price, id_menu} = body;
         return new Promise((resolve, reject) => {
-            const {name, price, id_menu} = body;
             const queryString = "UPDATE menu SET name=?, price=? WHERE id_menu=?";
             db.query(queryString, [name, price, id_menu], (err, data) => {
                 if(!err) {

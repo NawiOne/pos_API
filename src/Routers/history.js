@@ -7,7 +7,7 @@ const historyRouter = express.Router();
 // show all history
 historyRouter.get('/show', historyController.showHistory)
 // show by cashier
-historyRouter.get('/showcashier/:cashier', historyController.showByCashier)
+historyRouter.get('/showbycashier/:cashier', historyController.showByCashier)
 
 
 module.exports = historyRouter
