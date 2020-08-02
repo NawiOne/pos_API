@@ -1,6 +1,6 @@
 const db = require('../Configs/dbMysql');
 
-const querySelect = "SELECT menu.id_menu, menu.name, menu.price, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
+const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
 
 const menuModel = {
     getAllMenus: () => {
