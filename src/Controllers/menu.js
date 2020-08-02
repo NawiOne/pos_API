@@ -1,50 +1,51 @@
 const menuModel = require('../Models/menu');
+const formRespon = require('../Helpers/form-respon')
 
 const menuController = {
     getAllMenus : (_, res) =>{
         menuModel.getAllMenus()
         .then((data) =>{
-            res.json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.json(err)
+            formRespon.error(res,err)
         })
     },
     insertMenus: (req, res) =>{
         menuModel.insertMenu(req.body)
         .then((data) =>{
-            res.json(data);
+            formRespon.success(res,data);
         })
         .catch((err) =>{
-            res.json(err)
+            formRespon.error(res,err)
         })
 
     },
     deleteByid: (req, res) =>{
         menuModel.deleteById(req.body)
         .then((data) =>{
-            res.status(200).json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.status(500).json(err)
+            formRespon.error(res,err)
         })
     },
     updateById: (req, res) =>{
         menuModel.updateById(req.body)
         .then((data) =>{
-            res.status(200).json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.status(500).json(err)
+            formRespon.error(res,err)
         })
     },
     searchByName: (req, res) =>{
         menuModel.searchByName(req.params.name)
         .then((data) =>{
-            res.status(200).json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.status(500).json(err)
+            formRespon.error(res,err)
         })
     },
     sortByName:(_, res) =>{

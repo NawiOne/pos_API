@@ -1,22 +1,23 @@
 const historyModel = require('../Models/history');
+const formRespon = require('../Helpers/form-respon')
 
 const historyController = {
     showHistory: ( _, res) =>{
         historyModel.showHistory()
         .then((data) =>{
-            res.status(200).json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.status(500).json(err)
+            formRespon.err(res,err)
         })
     },
     showByCashier: (req, res) =>{
         historyModel.showByCashier(req.params.cashier)
         .then((data) =>{
-            res.status(200).json(data)
+            formRespon.success(res,data)
         })
         .catch((err) =>{
-            res.status(500).json(err)
+            formRespon.error(res,err)
         })
     }
 }
