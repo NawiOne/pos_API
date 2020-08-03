@@ -16,10 +16,11 @@ const menuModel = {
         });
     },
     insertMenu: (body) => {
-        const{name, price, id_category} = body
+        console.log(body)
+        const{name, picture, price, id_category} = body
         return new Promise((resolve, reject) => {
-            const queryInsert = "INSERT INTO menu SET name =?, price =?, id_category =?";
-            db.query(queryInsert, [name, price, id_category], (err, data) => {
+            const queryInsert = "INSERT INTO menu SET name =?, picture=?, price =?, id_category =?";
+            db.query(queryInsert, [name, picture, price, id_category], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
