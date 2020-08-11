@@ -13,14 +13,9 @@ menuRouter.delete('/delete', menuController.deleteByid);
 // update existing menu
 menuRouter.patch('/update', menuController.updateById);
 // search menu by name
-menuRouter.get('/search/:name', menuController.searchByName);
-// sort by name
-menuRouter.get('/sortbyname', menuController.sortByName);
-// sort by category
-menuRouter.get('/sortbycategory', menuController.sortByCategory);
-// sort by newest
-menuRouter.get('/sortbynewest', menuController.sortByNewest);
-// sort by price
-menuRouter.get('/sortbyprice', menuController.sortByPrice);
+menuRouter.get('/search/', menuController.searchByName);
+// sort by 
+menuRouter.get('/sortby', menuController.sortBy);
+
 
 module.exports = menuRouter;

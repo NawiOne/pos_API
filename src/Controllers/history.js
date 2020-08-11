@@ -8,9 +8,18 @@ const historyController = {
             formRespon.success(res,data)
         })
         .catch((err) =>{
-            formRespon.err(res,err)
+            formRespon.error(res,err)
         })
     },
+
+    getAllHis: (_, res) =>{
+        historyModel.selectAllHis()
+        .then((data) =>{
+            formRespon.success(res, data)
+        }).catch((err) =>{
+            formRespon.error(res, err)
+        })
+    } ,
     showByCashier: (req, res) =>{
         historyModel.showByCashier(req.params.cashier)
         .then((data) =>{

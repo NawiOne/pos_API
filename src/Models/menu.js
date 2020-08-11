@@ -43,11 +43,11 @@ const menuModel = {
             });
         });
     },
-    updateById: (body) => {
-        const {name, price, id_menu} = body;
+    updateById: (body, id) => {
+        const {name, price} = body;
         return new Promise((resolve, reject) => {
-            const queryString = "UPDATE menu SET name=?, price=? WHERE id_menu=?";
-            db.query(queryString, [name, price, id_menu], (err, data) => {
+            const queryString = `UPDATE menu SET name=?, price=? WHERE id_menu=${id}`;
+            db.query(queryString, [name, price], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
@@ -56,10 +56,11 @@ const menuModel = {
             });
         });
     },
-    searchByName: (name) => {
+    searchByName: ({name}) => {
         return new Promise((resolve, reject) => {
             const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%'`;
             db.query(searchMenuByName, (err, data) => {
+                console.log(name.toString())
                 if(!err) {
                     if(data.length === 0){
                       reject({
@@ -76,9 +77,11 @@ const menuModel = {
 
         });
     },
-    sortByName: () => {
+    sortBy: (query) => {
         return new Promise((resolve, reject) => {
-            const sortByName = `${querySelect} ORDER BY menu.name ASC`;
+            const sortBy= query.by;
+            const sortOrder = query.order;
+            const sortByName = `${querySelect} ORDER BY menu.${sortBy} ${sortOrder}`;
             db.query(sortByName, (err, data) =>{
                 if(!err){
                     resolve(data)
@@ -89,43 +92,8 @@ const menuModel = {
 
         });
     },
-    sortByCategory:() =>{
-        return new Promise((resolve, reject) =>{
-            const sortByCategory =  `${querySelect} ORDER BY name_category ASC`;
-            db.query(sortByCategory, (err, data) =>{
-                if(!err){
-                    resolve(data)
-                }else{
-                    reject(err)
-                }
-            })
-        })
-    },
-    sortByNewest: ()=>{
-        return new Promise((resolve, reject) =>{
-            const sortByNewest = `${querySelect} ORDER BY menu.created_at DESC`;
-            db.query(sortByNewest, (err, data) =>{
-                if(!err){
-                    resolve(data)
-                }else{
-                    reject(data)
-                }
-            })
-        })
-    },
-    sortByPrice: () =>{
-        return new Promise((resolve, reject) =>{
-            const sortByPrice =  `${querySelect} ORDER BY price ASC`;
-            db.query(sortByPrice, (err, data) =>{
-                if(!err){
-                    resolve(data)
-                }else{
-                    reject(data)
-                }
-            })
-        })
-    }
 
+  
 };
 
 module.exports = menuModel;

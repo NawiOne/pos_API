@@ -14,7 +14,7 @@ const formRespon = {
             data: err
         }
         res.json(responseObj);
-    }
+    },
 }
 
 module.exports = formRespon;

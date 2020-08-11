@@ -31,7 +31,7 @@ const menuController = {
         })
     },
     updateById: (req, res) =>{
-        menuModel.updateById(req.body)
+        menuModel.updateById(req.body, req.query.id)
         .then((data) =>{
             formRespon.success(res,data)
         })
@@ -40,7 +40,7 @@ const menuController = {
         })
     },
     searchByName: (req, res) =>{
-        menuModel.searchByName(req.params.name)
+        menuModel.searchByName(req.query)
         .then((data) =>{
             formRespon.success(res,data)
         })
@@ -48,8 +48,8 @@ const menuController = {
             formRespon.error(res,err)
         })
     },
-    sortByName:(_, res) =>{
-        menuModel.sortByName()
+    sortBy:(req, res) =>{
+        menuModel.sortBy(req.query)
         .then((data) =>{
             res.status(200).json(data)
         })
@@ -57,33 +57,7 @@ const menuController = {
             res.status(500).json(err)
         })
     },
-    sortByCategory: (_, res) =>{
-        menuModel.sortByCategory()
-        .then((data) =>{
-            res.status(200).json(data)
-        })
-        .catch((err) =>{
-            res.status(500).json(err)
-        })
-    }, 
-    sortByNewest: (_, res) =>{
-        menuModel.sortByNewest()
-        .then((data) =>{
-            res.status(200).json(data)
-        })
-        .catch((err) =>{
-            res.status(500).json(err)
-        })
-    },
-    sortByPrice: (_, res) =>{
-        menuModel.sortByPrice()
-        .then((data) =>{
-            res.status(200).json(data)
-        })
-        .catch((err) =>{
-            res.status(500).json(err)
-        })
-    }
+   
 }
 
 
