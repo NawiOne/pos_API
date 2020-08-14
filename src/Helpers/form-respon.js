@@ -15,6 +15,26 @@ const formRespon = {
         }
         res.json(responseObj);
     },
+    pagination: ({query}, res, data) =>{
+        const page = Number(query.page);
+        const limit = Number(query.limit);
+        const prevPage=
+            page ===1 ? "": `/getalldata/?page=${page-1}&limit=${limit}`;
+        const nextPage = `/getalldata/?page=${page + 1}&limit=${limit}`;
+        const responseObj = {
+            success : true,
+            status : 200,
+            data,
+            pageInfo: {
+                currentPage : query.page,
+                limit: query.limit,
+                prevPage,
+                nextPage,
+            }
+        }
+        res.json(responseObj)
+    }
+
 }
 
 module.exports = formRespon;

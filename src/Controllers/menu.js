@@ -2,10 +2,11 @@ const menuModel = require('../Models/menu');
 const formRespon = require('../Helpers/form-respon')
 
 const menuController = {
-    getAllMenus : (_, res) =>{
-        menuModel.getAllMenus()
+    getAllMenus : (req, res) =>{
+        const {page, limit} = req.query
+        menuModel.getAllMenus(page, limit)
         .then((data) =>{
-            formRespon.success(res,data)
+            formRespon.pagination(req,res,data)
         })
         .catch((err) =>{
             formRespon.error(res,err)

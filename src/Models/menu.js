@@ -1,12 +1,15 @@
 const db = require('../Configs/dbMysql');
 
-const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
+const querySelectMenu = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id ORDER BY id_menu ASC LIMIT ? OFFSET ?";
+
+const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id ORDER BY id_menu ASC ";
 
 const menuModel = {
-    getAllMenus: () => {
+    getAllMenus: (page, limit) => {
         return new Promise((resolve, reject) => {
-            const getMenu = `${querySelect}`;
-            db.query(getMenu, (err, data) => {
+            const offset = (page-1)* limit;
+            const getMenu = `${querySelectMenu}`;
+            db.query(getMenu, [Number(limit), offset], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
@@ -46,8 +49,8 @@ const menuModel = {
     updateById: (body, id) => {
         const {name, price} = body;
         return new Promise((resolve, reject) => {
-            const queryString = `UPDATE menu SET name=?, price=? WHERE id_menu=${id}`;
-            db.query(queryString, [name, price], (err, data) => {
+            const queryString = `UPDATE menu SET name=?, price=? WHERE id_menu=?`;
+            db.query(queryString, [name, price, id], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {
