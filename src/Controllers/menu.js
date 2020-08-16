@@ -23,7 +23,7 @@ const menuController = {
 
     },
     deleteByid: (req, res) =>{
-        menuModel.deleteById(req.body)
+        menuModel.deleteById(req.query.id)
         .then((data) =>{
             formRespon.success(res,data)
         })

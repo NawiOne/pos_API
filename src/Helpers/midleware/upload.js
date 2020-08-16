@@ -5,7 +5,7 @@ const path = require('path');
 
 const storage = multer.diskStorage({
     destination : (req, file, cb) =>{
-        cb(null, './public/images');
+        cb(null, "./public/images");
 
     },
     filename : (req, file, cb) =>{
@@ -39,7 +39,8 @@ const uploadFile = {
         single(req, res, (err) =>{
             if(err){
                 res.json({
-                    msg : err
+                    msg : err,
+                    msg2 : 'error bro'
                 })
             } else{
                 console.log(req.file)

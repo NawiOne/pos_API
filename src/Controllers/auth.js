@@ -8,7 +8,7 @@ const authCntroller = {
             const respondata = {
                 ...req.body,
                 id: data.insertid,
-                password : 'encrypted'
+                password : req.body.password
             }
             formRespons.success(res, respondata)
            

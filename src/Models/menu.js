@@ -33,10 +33,9 @@ const menuModel = {
             });
         });
     },
-    deleteById: (body) => {
-        const {id_menu} = body;
+    deleteById: (id) => {;
         return new Promise((resolve, reject) => {
-            const queryString = `DELETE FROM menu WHERE id_menu=${id_menu}`;
+            const queryString = `DELETE FROM menu WHERE id_menu=${id}`;
             db.query(queryString,(err, data) => {
                 if(!err) {
                     resolve(data);

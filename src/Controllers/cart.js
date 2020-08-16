@@ -5,6 +5,7 @@ const cartController = {
     getCart : (_, res) =>{
         cartModel.getCart()
         .then((data) =>{
+            console.log(data)
             formRespon.success(res, data)
         })
         .catch((err) =>{

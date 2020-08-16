@@ -5,7 +5,7 @@ const checkToken = (req, res, next) =>{
     const bearerToken = req.header('x-access-token');
     if(!bearerToken){
         res.json({
-            msg : "invalid token",
+            msg : "please login first",
         })
 
     }
