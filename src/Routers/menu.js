@@ -9,7 +9,7 @@ const menuRouter = express.Router();
 // get all menu
 menuRouter.get('/getalldata', menuController.getAllMenus);
 // insert new menu
-menuRouter.post('/insert', upload.singleUpload, menuController.insertMenus);
+menuRouter.post('/insert',admin, upload.singleUpload, menuController.insertMenus);
 // delete existing menu
 menuRouter.delete('/delete', admin,menuController.deleteByid);
 // update existing menu
