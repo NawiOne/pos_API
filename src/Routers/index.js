@@ -11,8 +11,8 @@ const authRouter = require('../Routers/auth');
 const indexRouter = express.Router();
 
 indexRouter.use('/', menuRouter);
-indexRouter.use('/history',admin, historyRouter)
-indexRouter.use('/cart', checkToken, cartRouter);
+indexRouter.use('/history',admin,historyRouter)
+indexRouter.use('/cart',checkToken, cartRouter);
 
 
 

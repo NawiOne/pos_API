@@ -2,7 +2,7 @@ const db = require('../Configs/dbMysql');
 
 const querySelectMenu = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id ORDER BY id_menu ASC LIMIT ? OFFSET ?";
 
-const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id ORDER BY id_menu ASC ";
+const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
 
 const menuModel = {
     getAllMenus: (page, limit) => {
