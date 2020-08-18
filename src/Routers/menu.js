@@ -3,6 +3,7 @@ const express = require('express');
 const menuController = require('../Controllers/menu');
 const upload = require('../Helpers/midleware/upload')
 const admin = require('../Helpers/midleware/admin')
+const checkToken = require('../Helpers/midleware/checktoken')
 
 const menuRouter = express.Router();
 
@@ -15,7 +16,7 @@ menuRouter.delete('/delete', admin,menuController.deleteByid);
 // update existing menu
 menuRouter.patch('/update', admin, menuController.updateById);
 // search menu by name
-menuRouter.get('/search/',admin, menuController.searchByName);
+menuRouter.get('/search/',checkToken, menuController.searchByName);
 // sort by 
 menuRouter.get('/sortby', admin,menuController.sortBy);
 
