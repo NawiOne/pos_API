@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 17, 2020 at 11:59 AM
+-- Generation Time: Aug 30, 2020 at 08:02 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -64,7 +64,7 @@ INSERT INTO `category` (`id`, `name_category`) VALUES
 
 CREATE TABLE `history` (
   `invoice` int(255) NOT NULL,
-  `cashier` text NOT NULL,
+  `cashier` text NOT NULL DEFAULT 'Rudi Hartono',
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `orders` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL
@@ -77,8 +77,7 @@ CREATE TABLE `history` (
 INSERT INTO `history` (`invoice`, `cashier`, `date`, `orders`, `amount`) VALUES
 (1225, 'Ahmad Jazuli', '2020-08-01 14:34:34', 'ramen, cake', 120000),
 (1229, 'Farhat Abis', '2020-08-01 14:36:02', 'ramen, sosis, mie ayam', 132000),
-(1230, 'Joko Kuntjoro', '2020-08-02 01:04:21', 'choco rhum, nasi goreng, sushi, krabby patty', 120000),
-(12234, 'Kuntjoro Cahyono', '2020-08-09 18:30:25', 'Ramen, sosis, nasi gorng', 172000);
+(1230, 'Joko Kuntjoro', '2020-08-02 01:04:21', 'choco rhum, nasi goreng, sushi, krabby patty', 120000);
 
 -- --------------------------------------------------------
 
@@ -110,7 +109,7 @@ CREATE TABLE `menu` (
   `name` varchar(64) NOT NULL,
   `picture` varchar(255) DEFAULT NULL,
   `price` decimal(11,0) NOT NULL,
-  `id_category` int(11) NOT NULL DEFAULT 1,
+  `id_category` int(11) NOT NULL DEFAULT 45,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -120,21 +119,21 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id_menu`, `name`, `picture`, `price`, `id_category`, `created_at`, `updated_at`) VALUES
-(4, 'Choco Rhum', 'https://img-global.cpcdn.com/recipes/2b7fd0a04c2d58dd/751x532cq70/dead-choco-rum-foto-resep-utama.jpg', '28000', 3, '2020-04-17 17:15:36', '2020-08-01 15:30:00'),
-(9, 'Ramen', 'https://www.theflavorbender.com/wp-content/uploads/2019/01/Easy-Chicken-Ramen-Featured-500x375.jpg', '10000', 2, '2020-07-30 23:09:12', '2020-07-30 23:09:12'),
-(38, 'nasi goreng', 'https://img-global.cpcdn.com/recipes/8979ffdea7759481/400x400cq70/photo.jpg', '12000', 2, '2020-08-07 08:44:53', '2020-08-07 08:44:53'),
-(39, 'Sushi', 'https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg?20200702132805&q=80&rw=750&rh=536', '85000', 2, '2020-08-07 08:48:39', '2020-08-07 08:48:39'),
+(39, 'Sushi', 'https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000370/img/basic/a0000370_main.jpg?20200702132805&q=80&rw=750&rh=536', '34000', 2, '2020-08-07 08:48:39', '2020-08-07 08:48:39'),
 (40, 'Rendang', 'https://asset.kompas.com/crops/gi24VPQMhftubxYIWPJATjHrxTA=/0x0:1000x667/750x500/data/photo/2020/06/30/5efb0cb4a0226.jpg', '34000', 2, '2020-08-07 09:43:58', '2020-08-07 09:43:58'),
-(43, 'Kebab', 'https://1.bp.blogspot.com/-xpc3z7qfuf0/XaBBqwkslaI/AAAAAAAAFQ4/46s-bpRvZzk0tO37vYbSV2tS0upr0B8ZQCLcBGAsYHQ/s1600/WhatsApp%2BImage%2B2019-10-11%2Bat%2B07.49.55.jpeg', '1222', 2, '2020-08-09 10:56:52', '2020-08-09 10:56:52'),
-(45, 'Sosis ayam', 'https://asset-a.grid.id//crop/0x0:0x0/360x240/photo/2019/10/27/4214810606.jpg', '13500', 3, '2020-08-09 11:09:03', '2020-08-09 11:09:03'),
-(48, 'Cake', 'https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/carrot-cake.jpg', '120000', 2, '2020-08-09 11:21:46', '2020-08-09 11:21:46'),
-(53, 'Pizza', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/54/ea/06/pizza-hut.jpg', '130000', 3, '2020-08-09 15:34:34', '2020-08-09 15:34:34'),
+(45, 'Sosis ayam', 'https://asset-a.grid.id//crop/0x0:0x0/360x240/photo/2019/10/27/4214810606.jpg', '5000', 3, '2020-08-09 11:09:03', '2020-08-09 11:09:03'),
+(48, 'Cake', 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxZCUQ8CQ0tgkWIy6R6BpUxt8lzrj-tPqxcw&usqp=CAU', '76000', 2, '2020-08-09 11:21:46', '2020-08-09 11:21:46'),
+(53, 'Pizza', 'https://media-cdn.tripadvisor.com/media/photo-s/0e/54/ea/06/pizza-hut.jpg', '60000', 3, '2020-08-09 15:34:34', '2020-08-09 15:34:34'),
 (54, 'Tempe mendoan', 'https://awsimages.detik.net.id/community/media/visual/2019/05/15/8fb58b7c-92e2-4905-8b44-983b669af652.jpeg?w=700&q=90', '1000', 3, '2020-08-09 16:03:42', '2020-08-09 16:03:42'),
-(55, 'Mie Kebo', 'https://cdn.idntimes.com/content-images/community/2019/11/d7494f923183ca10d2c49a00d860be0c-f82befb2c444061a6debd5da8532d04b.jpg', '14300', 2, '2020-08-10 00:13:30', '2020-08-10 00:13:30'),
+(55, 'Mie Kebo', 'https://cdn.idntimes.com/content-images/community/2019/11/d7494f923183ca10d2c49a00d860be0c-f82befb2c444061a6debd5da8532d04b.jpg', '11000', 2, '2020-08-10 00:13:30', '2020-08-10 00:13:30'),
 (56, 'Bakso', 'https://awsimages.detik.net.id/community/media/visual/2019/08/13/4d10c33e-c558-4c32-8b0a-baf65ba6f66a.jpeg?w=700&q=90', '10000', 2, '2020-08-10 08:54:50', '2020-08-10 08:54:50'),
 (57, 'Kerupuk', 'https://asset-a.grid.id/crop/0x0:0x0/700x465/photo/2018/08/03/3623507392.jpg', '2000', 3, '2020-08-10 09:30:48', '2020-08-10 09:30:48'),
 (59, 'Krabby patty', 'https://loop.co.id/uploads/article/media_upload/20733/youtube.com.jpg', '12000', 2, '2020-08-10 11:40:48', '2020-08-10 11:40:48'),
-(62, 'Martabak', 'http://localhost:8000/images/image-1597578943903.jpg', '5000', 4, '2020-08-16 18:55:44', '2020-08-16 18:55:44');
+(62, 'Martabak', 'http://localhost:8000/images/image-1597578943903.jpg', '17000', 4, '2020-08-16 18:55:44', '2020-08-16 18:55:44'),
+(71, 'jeruk rebus', 'http://localhost:8000/images/image-1598806131177.jpg', '5000', 4, '2020-08-30 23:48:51', '2020-08-30 23:48:51'),
+(72, 'jeruk rebus', 'http://localhost:8000/images/image-1598806308137.jpg', '5000', 4, '2020-08-30 23:51:48', '2020-08-30 23:51:48'),
+(73, 'jeruk rebus', 'http://localhost:8000/images/image-1598806427842.jpg', '5000', 4, '2020-08-30 23:53:47', '2020-08-30 23:53:47'),
+(74, 'nanas', 'http://localhost:8000/images/image-1598808712929.jpg', '1212', 2, '2020-08-31 00:31:52', '2020-08-31 00:31:52');
 
 -- --------------------------------------------------------
 
@@ -168,7 +167,7 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(225) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `id_level` int(11) NOT NULL
+  `id_level` int(11) DEFAULT 2
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -176,13 +175,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `id_level`) VALUES
-(2, 'chester', '$2b$10$OwAWmkRFxTP.VgEZRzx1He.xQ4JB35Y64rB7roi0n9Xr4tDLcCuW.', 2),
-(13, 'tepen hokings', '$2b$10$18DL8pNEjbVH9gbJTEjQMuhdCYqtQa4lXoicIaBDh7ioxdsjOOl4e', 2),
-(14, 'Nawirudin', '$2b$10$3Ro.KNDXFsXrKLkSvcKXke5jleoyz2H3ADdVw6gGQLnhHtv3HYtxi', 2),
-(15, 'xavie hernandes', '$2b$10$KsJabWOsvuCBCTceiML/6.XRPLrBxO5l7CUrjzl8NoOp0S6/3i47.', 2),
-(20, 'sergio pato ', '$2b$10$BwV5XsuAMibYQ4SRs7UIP.784wtBJXRQL/.abmEKiLn./OSZtEM/i', 2),
-(21, 'surya adi pratama ', '$2b$10$QS2Hi8.bQBCXzRAI5tUhw.1ND/jdKcNqwUktK8kTNaGr3imvifzL6', 1),
-(22, 'katie', '$2b$10$/rt04.7qH1JFZYyuyCgQyuhBJb3BQfPp9G7r6iUhLCPZv1OBQkrvC', 1);
+(46, 'anna', '$2b$10$iYiy3.y.0YsuB.x3CytB7O7sZQdH38NGqtzs0xmRCdRRXNPv3JdmS', 2),
+(47, 'nawirudin', '$2b$10$q4FQ1JhgAHp/CVK5We724.ToHHQxCpsrkqZ7N4CBs7vLV2vANqiwq', 1);
 
 --
 -- Indexes for dumped tables
@@ -256,7 +250,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
-  MODIFY `invoice` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12235;
+  MODIFY `invoice` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122346;
 
 --
 -- AUTO_INCREMENT for table `level`
@@ -268,13 +262,13 @@ ALTER TABLE `level`
 -- AUTO_INCREMENT for table `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
