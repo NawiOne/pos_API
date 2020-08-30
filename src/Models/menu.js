@@ -58,9 +58,9 @@ const menuModel = {
             });
         });
     },
-    searchByName: ({name}) => {
+    searchByName: ({name,by}) => {
         return new Promise((resolve, reject) => {
-            const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%'`;
+            const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%' ORDER BY ${by}`;
             db.query(searchMenuByName, (err, data) => {
                 console.log(name.toString())
                 if(!err) {
@@ -93,6 +93,20 @@ const menuModel = {
             })
 
         });
+    },
+    insertToTrans: (body) =>{
+        const {invoice, cashier, orders, amount} = body
+        return new Promise((resolve, reject) =>{
+            const insert = "INSERT INTO history SET invoice=?, cashier=?, orders=?, amount=?";
+            db.query(insert, [invoice, cashier,orders, amount], (err, data) =>{
+                if(!err){
+                    resolve(data)
+                } else{
+                    reject(err)
+                }
+            })
+        })
+
     },
 
   

@@ -14,7 +14,7 @@ const checkAdmin = (req, res, next) => {
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         if(decoded.id_level !== 1) {
             res.json({
-                msg: "'Sorry Access Denied. you're not Admin"
+                msg: "Sorry Access Denied. you're not Admin"
             });
         } else {
             req.decodedToken = decoded;

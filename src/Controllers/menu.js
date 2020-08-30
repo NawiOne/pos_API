@@ -14,8 +14,13 @@ const menuController = {
     },
     insertMenus: (req, res) =>{
         menuModel.insertMenu(req.body)
+
         .then((data) =>{
-            formRespon.success(res,data);
+            const respondata = {
+                ...req.body,
+                data: data,
+            }
+            formRespon.success(res,respondata);
         })
         .catch((err) =>{
             formRespon.error(res,err)
@@ -56,6 +61,18 @@ const menuController = {
         })
         .catch((err) =>{
             res.status(500).json(err)
+        })
+    },
+    insertTrans:(req, res) =>{
+        menuModel.insertToTrans(req.body)
+        .then((data) =>{
+            const resData={
+                ...req.body
+            }
+            formRespon.success(res, resData)
+        })
+        .catch((err) =>{
+            formRespon.error(res,err)
         })
     },
    

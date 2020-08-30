@@ -17,7 +17,7 @@ const historyModel ={
     },
     selectAllHis : ()=>{
         return new Promise((resolve, reject) =>{
-            const getAll = "SELECT * FROM history";
+            const getAll = "SELECT * FROM history ORDER BY date";
             db.query(getAll, (err, data) =>{
                 if(!err) {
                     resolve(data)
@@ -27,6 +27,21 @@ const historyModel ={
             })
         })
     },
+    // insertHistory: (body) =>{
+    //     const {invoice, cashier, orders, amount} = body
+    //     return new Promise((resolve, reject) =>{
+    //         const insert = "INSERT INTO history SET invoice=?, cashier=?, orders=?, amount=?";
+    //         db.query(insert, [invoice, cashier,orders, amount], (err, data) =>{
+    //             if(!err){
+    //                 resolve(data)
+    //             } else{
+    //                 reject(err)
+    //             }
+    //         })
+    //     })
+
+    // },
+
     showByCashier: (cashier) =>{
         return new Promise((resolve, reject) =>{
             const showByCashier = `${selectQuery} WHERE cashier LIKE '%${cashier}%'`;

@@ -10,6 +10,7 @@ historyRouter.get('/', historyController.showHistory)
 historyRouter.get('/search/:cashier', historyController.showByCashier)
 // show all history
 historyRouter.get('/getall', historyController.getAllHis)
+// historyRouter.post('/insert', historyController.insertHis)
 
 
 module.exports = historyRouter

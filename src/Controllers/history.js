@@ -20,6 +20,18 @@ const historyController = {
             formRespon.error(res, err)
         })
     } ,
+    // insertHis:(req, res) =>{
+    //     historyModel.insertHistory(req.body)
+    //     .then((data) =>{
+    //         const resData={
+    //             ...req.body
+    //         }
+    //         formRespon.success(res, resData)
+    //     })
+    //     .catch((err) =>{
+    //         formRespon.error(res,err)
+    //     })
+    // },
     showByCashier: (req, res) =>{
         historyModel.showByCashier(req.params.cashier)
         .then((data) =>{

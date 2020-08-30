@@ -52,6 +52,7 @@ const authModel = {
                     reject(err);
                 }
                 if(!data.length) {
+                    console.log(data)
                     reject("sorry username not found");
                 } else {
 
@@ -64,7 +65,8 @@ const authModel = {
                                 id_level,
                             };
                             const token = jwt.sign(payload, process.env.SECRET_KEY, {
-                                expiresIn: "3h",
+                                // expiresIn: "180000",
+                                expiresIn: "3h"
                             });
                             const msg = "login success";
                             resolve({token, msg});
