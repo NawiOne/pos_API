@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2020 at 08:23 PM
+-- Generation Time: Aug 30, 2020 at 08:37 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -64,7 +64,7 @@ INSERT INTO `category` (`id`, `name_category`) VALUES
 
 CREATE TABLE `history` (
   `invoice` int(255) NOT NULL,
-  `cashier` text NOT NULL DEFAULT 'Rudi Hartono',
+  `cashier` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `orders` varchar(255) NOT NULL,
   `amount` int(255) NOT NULL
