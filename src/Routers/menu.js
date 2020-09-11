@@ -19,7 +19,8 @@ menuRouter.patch('/update', admin, menuController.updateById);
 menuRouter.get('/search', menuController.searchByName);
 // sort by 
 menuRouter.get('/sortby', admin,menuController.sortBy);
-menuRouter.post('/insertTrans', menuController.insertTrans)
+menuRouter.post('/insertTrans', menuController.insertTrans);
+menuRouter.get('/category', menuController.getCategory)
 
 
 module.exports = menuRouter;

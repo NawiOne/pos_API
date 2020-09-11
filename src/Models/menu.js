@@ -108,6 +108,18 @@ const menuModel = {
         })
 
     },
+    getCategory : () =>{
+       return new Promise ((resolve, reject) =>{
+            const getCat = 'SELECT * FROM category'
+            db.query( getCat, (err, data) =>{
+                if(!err){
+                    resolve(data)
+                } else{
+                    reject(err)
+                }
+            })
+        })
+    }
 
   
 };

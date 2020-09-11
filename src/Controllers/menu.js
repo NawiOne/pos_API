@@ -75,6 +75,15 @@ const menuController = {
             formRespon.error(res,err)
         })
     },
+    getCategory: (_, res) =>{
+        menuModel.getCategory()
+        .then((data)=>{
+            formRespon.success(res, data)
+        }).catch((err) =>{
+            formRespon.error(res, err)
+        })
+        
+    }
    
 }
 
