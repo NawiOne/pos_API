@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 30, 2020 at 08:37 PM
+-- Generation Time: Sep 13, 2020 at 03:31 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -43,18 +43,19 @@ CREATE TABLE `cart` (
 
 CREATE TABLE `category` (
   `id` int(11) NOT NULL,
-  `name_category` varchar(64) NOT NULL
+  `name_category` varchar(64) NOT NULL,
+  `image_category` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name_category`) VALUES
-(1, 'Appetizers'),
-(2, 'Main Dish'),
-(3, 'Dessert'),
-(4, 'Beverages');
+INSERT INTO `category` (`id`, `name_category`, `image_category`) VALUES
+(1, 'Appetizers', 'https://scrappygeek.com/wp-content/uploads/2016/07/Taco-Cup-Appetizers.jpg'),
+(2, 'Main Dish', 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F24%2F2009%2F03%2Fst_916_fofish071196926_1-2000.jpg&q=85'),
+(3, 'Dessert', 'https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg'),
+(4, 'Beverages', 'https://dev.rodpub.com/images/102/819_main.jpg');
 
 -- --------------------------------------------------------
 
