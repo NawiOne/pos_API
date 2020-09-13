@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2020 at 04:58 PM
+-- Generation Time: Sep 13, 2020 at 05:10 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -187,7 +187,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `id_level`) VALUES
 
 CREATE TABLE `user_order` (
   `id` varchar(11) NOT NULL,
-  `date` varchar(50) NOT NULL DEFAULT current_timestamp(),
+  `date` varchar(50) DEFAULT NULL,
   `name` varchar(244) NOT NULL,
   `orders` varchar(244) NOT NULL,
   `amount` int(20) NOT NULL
