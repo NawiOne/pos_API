@@ -18,7 +18,7 @@ const orderModel = {
     insertOrder: (body) =>{
         const {id, name, orders, amount} = body;
         return new Promise((resolve, reject) =>{
-            const insertQuery = 'INSERT INTO user_order SET id=?, name=?, orders=?, amount=?';
+            const insertQuery = 'INSERT INTO user_order SET id=?, date=?, name=?, orders=?, amount=?';
             db.query(insertQuery, [id, name, orders, amount], (err, data) =>{
                 if(!err){
                     resolve(data)
