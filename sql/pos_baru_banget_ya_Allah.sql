@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2020 at 05:18 PM
+-- Generation Time: Sep 13, 2020 at 03:48 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -179,6 +179,27 @@ INSERT INTO `users` (`id`, `username`, `password`, `id_level`) VALUES
 (46, 'anna', '$2b$10$iYiy3.y.0YsuB.x3CytB7O7sZQdH38NGqtzs0xmRCdRRXNPv3JdmS', 2),
 (47, 'nawirudin', '$2b$10$q4FQ1JhgAHp/CVK5We724.ToHHQxCpsrkqZ7N4CBs7vLV2vANqiwq', 1);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_order`
+--
+
+CREATE TABLE `user_order` (
+  `id` varchar(11) NOT NULL,
+  `name` varchar(244) NOT NULL,
+  `orders` varchar(244) NOT NULL,
+  `amount` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_order`
+--
+
+INSERT INTO `user_order` (`id`, `name`, `orders`, `amount`) VALUES
+('1233', 'jazuli', 'jagung, keju', 12000),
+('13213', 'nawi', 'dfdfd, nasi padang, vsdfkdf', 12000);
+
 --
 -- Indexes for dumped tables
 --
@@ -230,6 +251,12 @@ ALTER TABLE `order_menu`
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_level` (`id_level`);
+
+--
+-- Indexes for table `user_order`
+--
+ALTER TABLE `user_order`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
