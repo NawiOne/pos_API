@@ -20,6 +20,14 @@ const orderUSerController = {
         }).catch((err) =>{
             formRespon.error(res,err)
         })
+    },
+    deleteById: (req, res) =>{
+        orderUSerModel.deleteOrder(req.query.id)
+        .then((data) =>{
+            formRespon.success(res, data)
+        }).catch((err) =>{
+            formRespon.error(res, err)
+        })
     }
 }
 

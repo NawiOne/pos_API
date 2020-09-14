@@ -6,5 +6,6 @@ const orderUserRouter = express.Router();
 
 orderUserRouter.get('/', orderUserController.showOrder);
 orderUserRouter.post('/', orderUserController.insertOrder)
+orderUserRouter.delete('/', orderUserController.deleteById)
 
 module.exports = orderUserRouter;

@@ -33,7 +33,7 @@ const menuModel = {
             });
         });
     },
-    deleteById: (id) => {;
+    deleteById: (id) => {
         return new Promise((resolve, reject) => {
             const queryString = `DELETE FROM menu WHERE id_menu=${id}`;
             db.query(queryString,(err, data) => {

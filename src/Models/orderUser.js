@@ -27,6 +27,18 @@ const orderModel = {
                 }
             })
         })
+    }, 
+    deleteOrder: (id) =>{
+        return new Promise((resolve, reject) =>{
+            const query = `DELETE FROM user_order WHERE id=${id}`;
+            db.query(query, (err, data) =>{
+                if(!err){
+                    resolve(data)
+                } else{
+                    reject(err)
+                }
+            })
+        })
     }
 }
 
