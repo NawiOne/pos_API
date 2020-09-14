@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2020 at 03:48 PM
+-- Generation Time: Sep 14, 2020 at 11:09 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.31
 
@@ -21,19 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pos`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `id_cart` int(11) NOT NULL,
-  `id_menu` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -56,6 +43,19 @@ INSERT INTO `category` (`id`, `name_category`, `image_category`) VALUES
 (2, 'Main Dish', 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F24%2F2009%2F03%2Fst_916_fofish071196926_1-2000.jpg&q=85'),
 (3, 'Dessert', 'https://realfood.tesco.com/media/images/RFO-1400x919-classic-chocolate-mousse-69ef9c9c-5bfb-4750-80e1-31aafbd80821-0-1400x919.jpg'),
 (4, 'Beverages', 'https://dev.rodpub.com/images/102/819_main.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer`
+--
+
+CREATE TABLE `customer` (
+  `id_customer` int(255) NOT NULL,
+  `name` varchar(225) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -186,36 +186,27 @@ INSERT INTO `users` (`id`, `username`, `password`, `id_level`) VALUES
 --
 
 CREATE TABLE `user_order` (
-  `id` varchar(11) NOT NULL,
+  `date` varchar(50) DEFAULT NULL,
   `name` varchar(244) NOT NULL,
   `orders` varchar(244) NOT NULL,
   `amount` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_order`
---
-
-INSERT INTO `user_order` (`id`, `name`, `orders`, `amount`) VALUES
-('1233', 'jazuli', 'jagung, keju', 12000),
-('13213', 'nawi', 'dfdfd, nasi padang, vsdfkdf', 12000);
-
---
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`),
-  ADD KEY `id_menu` (`id_menu`);
 
 --
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id_customer`);
 
 --
 -- Indexes for table `history`
@@ -253,26 +244,20 @@ ALTER TABLE `users`
   ADD KEY `id_level` (`id_level`);
 
 --
--- Indexes for table `user_order`
---
-ALTER TABLE `user_order`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=413;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `id_customer` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `history`
