@@ -39,7 +39,7 @@ const uploadFile = {
         single(req, res, (err) =>{
             if(err){
                 res.json({
-                    msg : err,
+                    msg : ('ini eror',err),
                 })
             } else{
                 console.log(req.file)
