@@ -40,7 +40,6 @@ const uploadFile = {
             if(err){
                 res.json({
                     msg : err,
-                    msg2 : 'error bro'
                 })
             } else{
                 console.log(req.file)
