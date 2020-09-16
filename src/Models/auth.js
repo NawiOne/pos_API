@@ -69,7 +69,7 @@ const authModel = {
                                 expiresIn: "3h"
                             });
                             const msg = "login success";
-                            resolve({token, msg});
+                            resolve({token, msg, username, id_level});
 
                         }
                         if(!result) {
