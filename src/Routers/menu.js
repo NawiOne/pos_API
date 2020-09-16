@@ -12,13 +12,13 @@ menuRouter.get('/getalldata', menuController.getAllMenus);
 // insert new menu
 menuRouter.post('/insert', upload.singleUpload, menuController.insertMenus);
 // delete existing menu
-menuRouter.delete('/delete', admin,menuController.deleteByid);
+menuRouter.delete('/delete',menuController.deleteByid);
 // update existing menu
-menuRouter.patch('/update', admin, menuController.updateById);
+menuRouter.patch('/update', menuController.updateById);
 // search menu by name
 menuRouter.get('/search', menuController.searchByName);
 // sort by 
-menuRouter.get('/sortby', admin,menuController.sortBy);
+menuRouter.get('/sortby',menuController.sortBy);
 menuRouter.post('/insertTrans', menuController.insertTrans);
 menuRouter.get('/category', menuController.getCategory)
 
