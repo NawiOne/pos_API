@@ -45,11 +45,11 @@ const menuModel = {
             });
         });
     },
-    updateById: (body, id) => {
-        const {name, price} = body;
+    updateById: (body) => {
+        const {name, picture, price, id_category, id_menu} = body;
         return new Promise((resolve, reject) => {
-            const queryString = `UPDATE menu SET name=?, price=? WHERE id_menu=?`;
-            db.query(queryString, [name, price, id], (err, data) => {
+            const queryString = `UPDATE menu SET name=?, picture=?, price=?, id_category=? WHERE id_menu=?`;
+            db.query(queryString, [name,picture, price, id_category, id_menu], (err, data) => {
                 if(!err) {
                     resolve(data);
                 } else {

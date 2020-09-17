@@ -14,7 +14,7 @@ menuRouter.post('/insert', upload.singleUpload, menuController.insertMenus);
 // delete existing menu
 menuRouter.delete('/delete',menuController.deleteByid);
 // update existing menu
-menuRouter.patch('/update', menuController.updateById);
+menuRouter.patch('/update', upload.singleUpload, menuController.updateById);
 // search menu by name
 menuRouter.get('/search', menuController.searchByName);
 // sort by 

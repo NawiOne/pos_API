@@ -37,7 +37,7 @@ const menuController = {
         })
     },
     updateById: (req, res) =>{
-        menuModel.updateById(req.body, req.query.id)
+        menuModel.updateById(req.body)
         .then((data) =>{
             formRespon.success(res,data)
         })
