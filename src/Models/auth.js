@@ -17,7 +17,7 @@ const authModel = {
                         reject(err);
                     }
                     // check existing username
-                    const checkQuery = `SELECT username FROM users WHERE username ='%${username}%'`;
+                    const checkQuery = `SELECT username FROM users WHERE username ='${username}'`;
                     db.query(checkQuery, (err, data) => {
                         if(err) {
                             reject(err);
