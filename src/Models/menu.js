@@ -2,7 +2,7 @@ const db = require('../Configs/dbMysql');
 
 const querySelectMenu = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category, menu.id_category FROM `category` JOIN menu ON menu.id_category=category.id ORDER BY id_menu ASC LIMIT ? OFFSET ?";
 
-const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id";
+const querySelect = "SELECT menu.id_menu, menu.name, menu.price, menu.picture, category.name_category FROM `category` JOIN menu ON menu.id_category=category.id ";
 
 const menuModel = {
     getAllMenus: (page, limit) => {
@@ -59,7 +59,7 @@ const menuModel = {
     },
     searchByName: ({name,by}) => {
         return new Promise((resolve, reject) => {
-            const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%' ORDER BY ${by}`;
+            const searchMenuByName = `${querySelect} WHERE menu.name LIKE '%${name}%' ORDER BY ${by} `;
             db.query(searchMenuByName, (err, data) => {
                 console.log(name.toString())
                 if(!err) {
@@ -80,13 +80,13 @@ const menuModel = {
     },
     sortBy: (query) => {
         return new Promise((resolve, reject) => {
-            const sortBy= query.by;
-            const sortOrder = query.order;
-            const sortByName = `${querySelect} ORDER BY menu.${sortBy} ${sortOrder}`;
+            const offset = (Number(query.page) - 1) * Number(query.limit);
+            const sortByName = `${querySelect} ORDER BY ${query.sortBy} ${query.sortOrder} LIMIT ${query.limit} OFFSET ${offset}`;
             db.query(sortByName, (err, data) =>{
                 if(!err){
                     resolve(data)
                 }else{
+                    console.log(err)
                     reject(err)
                 }
             })

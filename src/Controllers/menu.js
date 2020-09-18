@@ -56,11 +56,11 @@ const menuController = {
     },
     sortBy:(req, res) =>{
         menuModel.sortBy(req.query)
-        .then((data) =>{
-            res.status(200).json(data)
-        })
-        .catch((err) =>{
-            res.status(500).json(err)
+        .then((data) => {
+            formRespon.paginationSort(req.query, res, data);
+        }).catch((err) => {
+            console.log(err)
+            formRespon.error(res, err);
         })
     },
     insertTrans:(req, res) =>{

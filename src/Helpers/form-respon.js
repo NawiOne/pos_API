@@ -33,7 +33,27 @@ const formRespon = {
             }
         }
         res.json(responseObj)
+    },
+    paginationSort: (query, res, data) =>{
+        const page = Number(query.page);
+        const limit = Number(query.limit);
+        const prevPage=
+            page ===1 ? "": `/sortby/?sortBy='${query.sortBy}'&sortOrder='${query.sortOrder}'&page=${page-1}&limit=${limit}`;
+        const nextPage = `/sortby/?sortBy='${query.sortBy}'&sortOrder='${query.sortOrder}'&page=${page+1}&limit=${limit}`;
+        const responseObj = {
+            success : true,
+            status : 200,
+            data,
+            pageInfo: {
+                currentPage : query.page,
+                limit: query.limit,
+                prevPage,
+                nextPage,
+            }
+        }
+        res.json(responseObj)
     }
+
 
 }
 
