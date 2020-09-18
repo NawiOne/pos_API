@@ -4,7 +4,7 @@ const orderUserController = require('../Controllers/orderUser');
 
 const orderUserRouter = express.Router();
 
-orderUserRouter.get('/', orderUserController.showOrder);
+orderUserRouter.get('/', orderUserController.showOrderByName);
 orderUserRouter.post('/', orderUserController.insertOrder)
 orderUserRouter.delete('/', orderUserController.deleteById)
 
