@@ -1,11 +1,11 @@
 const db = require('../Configs/dbMysql');
 
-const selectQuery = "SELECT * FROM user_order ";
+const selectQuery = "SELECT * FROM user_order";
 
 const orderModel = {
-    showOrderByName: (name) =>{
+    showOrder: () =>{
         return new Promise((resolve, reject) =>{
-            const showQuery = `${selectQuery} WHERE name='${name}'`;
+            const showQuery = selectQuery;
             db.query(showQuery, (err, data) =>{
                 if(!err){
                     resolve(data)

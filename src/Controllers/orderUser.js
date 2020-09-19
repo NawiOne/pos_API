@@ -2,8 +2,8 @@ const orderUSerModel = require('../Models/orderUser');
 const formRespon = require('../Helpers/form-respon');
 
 const orderUSerController = {
-    showOrderByName : (req, res) =>{
-        orderUSerModel.showOrderByName(req.query.name)
+    showOrder : (_, res) =>{
+        orderUSerModel.showOrder()
         .then((data) =>{
             formRespon.success(res, data)
         }).catch((err) =>{
