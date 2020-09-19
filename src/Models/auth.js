@@ -63,6 +63,7 @@ const authModel = {
                             const payload = {
                                 username,
                                 id_level,
+                                picture,
                             };
                             const token = jwt.sign(payload, process.env.SECRET_KEY, {
                                 // expiresIn: "180000",
