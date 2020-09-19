@@ -44,8 +44,8 @@ const authModel = {
     },
     loginUser: (body) => {
         return new Promise((resolve, reject) => {
-            const {username, password} = body;
-            const queryLevel = "SELECT username, password, id_level FROM users WHERE username=?";
+            const {username, password, picture} = body;
+            const queryLevel = "SELECT username, password, id_level, picture FROM users WHERE username=?";
             db.query(queryLevel, username, (err, data) => {
                 console.log(data);
                 if(err) {
@@ -63,7 +63,6 @@ const authModel = {
                             const payload = {
                                 username,
                                 id_level,
-                                picture,
                             };
                             const token = jwt.sign(payload, process.env.SECRET_KEY, {
                                 // expiresIn: "180000",
