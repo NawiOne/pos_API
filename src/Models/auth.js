@@ -85,6 +85,18 @@ const authModel = {
 
         });
     },
+    updateUser : (body) => {
+        return new Promise((resolve, reject) => {
+            const queryString = 'UPDATE users SET? WHERE id=?';
+            db.query(queryString, [body, body.id], (err, data) =>{
+                if (!err) {
+                    resolve(data)
+                } else {
+                    reject(err)
+                }
+            })
+        })
+    }
 
 };
 

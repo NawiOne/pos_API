@@ -27,6 +27,15 @@ const authCntroller = {
             formRespons.error(res, err)
         })
         
+    },
+    updateUser: (req, res) =>{
+        authModel.updateUser(req.body)
+        .then((data) => {
+            formRespons.success(res, data)
+        })
+        .catch((err) => {
+            formRespons.error(res, err)
+        })
     }
 
 }
