@@ -44,7 +44,7 @@ const authModel = {
     },
     loginUser: (body) => {
         return new Promise((resolve, reject) => {
-            const {username, password, picture} = body;
+            const {username, password} = body;
             const queryLevel = "SELECT username, password, id_level, picture FROM users WHERE username=?";
             db.query(queryLevel, username, (err, data) => {
                 console.log(data);
@@ -60,6 +60,7 @@ const authModel = {
                         if(result) {
                             console.log(data);
                             const {id_level} = data[0];
+                            const {picture} = data[0];
                             const payload = {
                                 username,
                                 id_level,
