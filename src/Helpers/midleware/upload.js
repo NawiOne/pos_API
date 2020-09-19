@@ -24,7 +24,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 const limits = {
-    fileSize: 1 * 1000 * 1000
+    fileSize: 2 * 1000 * 1000
 };
 
 const upload = multer({
@@ -41,13 +41,14 @@ const uploadFile = {
                 res.json({
                     msg: ('ini eror', err),
                 });
-            } else {
+            } else{
                 try {
-                    req.body.picture = `${process.env.URL}images/${req.file.filename}`;
-                } catch {
-                    console.log(err);
-                    next();
-                }
+                    req.body.picture = `http://localhost:8000/images/${req.file.filename}`
+                  } catch {
+                    console.log(err)
+                  } finally {
+                    next()
+                  }
             }
         });
     }

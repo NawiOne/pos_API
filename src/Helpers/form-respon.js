@@ -20,7 +20,7 @@ const formRespon = {
         const limit = Number(query.limit);
         const prevPage=
             page ===1 ? "": `/getalldata/?page=${page-1}&limit=${limit}`;
-        const nextPage = `/getalldata/?page=${page + 1}&limit=${limit}`;
+        const nextPage = data.length < limit ? "" : `/getalldata/?page=${page + 1}&limit=${limit}`;
         const responseObj = {
             success : true,
             status : 200,
