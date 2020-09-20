@@ -45,7 +45,7 @@ const authModel = {
     loginUser: (body) => {
         return new Promise((resolve, reject) => {
             const {username, password} = body;
-            const queryLevel = "SELECT username, password, id_level, picture, email FROM users WHERE username=?";
+            const queryLevel = "SELECT id, username, password, id_level, picture, email FROM users WHERE username=?";
             db.query(queryLevel, username, (err, data) => {
                 console.log(data);
                 if(err) {
@@ -59,6 +59,7 @@ const authModel = {
                     bcrypt.compare(password, data[0].password, (err, result) => {
                         if(result) {
                             console.log(data);
+                            const {id} = data[0];
                             const {id_level} = data[0];
                             const {picture} = data[0];
                             const {email} = data[0];
@@ -71,7 +72,7 @@ const authModel = {
                                 expiresIn: "3h"
                             });
                             const msg = "login success";
-                            resolve({token, msg, username, id_level, picture, email});
+                            resolve({token, msg, username, id_level, picture, email, id});
 
                         }
                         if(!result) {
