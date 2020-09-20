@@ -99,6 +99,18 @@ const authModel = {
                 }
             })
         })
+    }, 
+    getDataUser: ({id}) => {
+        return new Promise((resolve, reject) =>{
+            const queryString = `SELECT id, username, email, picture FROM users WHERE id=${id}`;
+            db.query(queryString, (err, data) =>{
+                if(!err){
+                    resolve(data)
+                } else{
+                    reject(err)
+                }
+            })
+        })
     }
 
 };

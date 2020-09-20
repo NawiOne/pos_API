@@ -36,6 +36,14 @@ const authCntroller = {
         .catch((err) => {
             formRespons.error(res, err)
         })
+    },
+    getDatauser: (req, res) => {
+        authModel.getDataUser(req.query)
+        .then((data) =>{
+            formRespons.success(res, data)
+        }).catch((err) => {
+            formRespons.error(res, err)
+        })
     }
 
 }
